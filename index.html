@@ -6,11 +6,11 @@
 <script>(function() {function signalGooglefcPresent() {if (!window.frames['googlefcPresent']) {if (document.body) {const iframe = document.createElement('iframe'); iframe.style = 'width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;'; iframe.style.display = 'none'; iframe.name = 'googlefcPresent'; document.body.appendChild(iframe);} else {setTimeout(signalGooglefcPresent, 0);}}}signalGooglefcPresent();})();</script>
 
 	
-<!-- Works After Few Seconds-->
+<!-- PPAds
   <script>
     (function () {
     const storageKey = "lastAdLoadTime";
-    const delayBeforeLoading = 4000; // 5 seconds
+    const delayBeforeLoading = 3000; // 5 seconds
 
     function loadAdsScript() {
         (function(s, u, z, p) {
@@ -18,6 +18,26 @@
             s.setAttribute("data-zone", z);
             p.appendChild(s);
         })(document.createElement("script"), "https://whacmoltibsay.net/tag.min.js", 7463304, document.body || document.documentElement);
+    }
+
+    setTimeout(loadAdsScript, delayBeforeLoading);
+})();
+
+</script>
+-->
+
+	
+<script>
+
+(function () {
+    const storageKey = "lastAdLoadTime";
+    const delayBeforeLoading = 4000; // 5 seconds
+
+    function loadAdsScript() {
+        const script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = "//pl26257048.effectiveratecpm.com/d6/2b/8d/d62b8d48a8aaa42d1cca91eb51aba2d4.js";
+        document.body.appendChild(script);
     }
 
     setTimeout(loadAdsScript, delayBeforeLoading);
