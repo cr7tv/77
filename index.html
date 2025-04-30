@@ -234,8 +234,8 @@
                                 </center>
 
 
-				                                    <div style="text-align: center; margin-top: 20px; width: 100%;">
-  <h3 style="margin-bottom: 5px;">Share Link With Your Friends:</h3>
+<div style="text-align: center; margin-top: 20px; width: 100%;">
+  <h3 style="margin-bottom: 5px;">Share Link with your Friends:</h3>
   <div id="shareLinkBox" ondblclick="copyToClipboard(this)" style="
     width: 100%;
     box-sizing: border-box;
@@ -247,16 +247,24 @@
     word-break: break-word;
     cursor: pointer;
     max-width: 100%;
-  ">
-    <!-- Link will appear here -->
-  </div>
+  ">Generating shortened link...</div>
   <small>Double-click to copy the link to the clipboard.</small>
 </div>
 
 <script>
   function loadShareLink() {
-    const currentUrl = window.location.href;
-    document.getElementById("shareLinkBox").textContent = currentUrl;
+    const originalUrl = window.location.href;
+    const apiUrl = 'https://tinyurl.com/api-create.php?url=' + encodeURIComponent(originalUrl);
+
+    fetch(apiUrl)
+      .then(response => response.text())
+      .then(shortUrl => {
+        document.getElementById("shareLinkBox").textContent = shortUrl;
+      })
+      .catch(error => {
+        document.getElementById("shareLinkBox").textContent = "Error generating link.";
+        console.error("Shortening failed:", error);
+      });
   }
 
   function copyToClipboard(element) {
@@ -268,6 +276,7 @@
 
   loadShareLink();
 </script>
+
 				    
                                 <center>
                                     <form>
