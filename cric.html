@@ -236,11 +236,48 @@
                                 </center>
 
 
-                                <center>
-                                    <form>
-                                        <input class="MyButton" onclick="window.location.href='https://yosintv2.github.io/tv/ads.html'" type="button" value="Refresh Live" />
-                                    </form>
-                                </center>
+<div style="text-align: center; width: 100%;">
+  <h4 style="margin-bottom: 5px;"> 👉 Share this live link with your Friends:</h4>
+  <div id="shareLinkBox" ondblclick="copyToClipboard(this)" style="
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #f8f8f8;
+    font-family: monospace;
+    white-space: pre-wrap;
+    word-break: break-word;
+    cursor: pointer;
+    max-width: 100%;
+  ">Generating shortened link...</div>
+  <small>Double-click to copy the link to the clipboard.</small>
+</div>
+
+<script>
+  function loadShareLink() {
+    const originalUrl = window.location.href;
+    const apiUrl = 'https://tinyurl.com/api-create.php?url=' + encodeURIComponent(originalUrl);
+
+    fetch(apiUrl)
+      .then(response => response.text())
+      .then(shortUrl => {
+        document.getElementById("shareLinkBox").textContent = shortUrl;
+      })
+      .catch(error => {
+        document.getElementById("shareLinkBox").textContent = "Error generating link.";
+        console.error("Shortening failed:", error);
+      });
+  }
+
+  function copyToClipboard(element) {
+    const text = element.textContent;
+    navigator.clipboard.writeText(text).then(() => {
+      alert("Copied to clipboard!");
+    });
+  }
+
+  loadShareLink();
+</script>
 
 
                                 <div class="disclaimer" style="text-align: center;"><b><span style="color: black;"> Skip 1-2 Ads | Watch Peacefully </span></b></div>
