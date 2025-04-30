@@ -234,15 +234,49 @@
                                 </center>
 
 
+				                                    <div style="text-align: center; margin-top: 20px; width: 100%;">
+  <h3 style="margin-bottom: 5px;">Share Link With Your Friends:</h3>
+  <div id="shareLinkBox" ondblclick="copyToClipboard(this)" style="
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #f8f8f8;
+    font-family: monospace;
+    white-space: pre-wrap;
+    word-break: break-word;
+    cursor: pointer;
+    max-width: 100%;
+  ">
+    <!-- Link will appear here -->
+  </div>
+  <small>Double-click to copy the link to the clipboard.</small>
+</div>
+
+<script>
+  function loadShareLink() {
+    const currentUrl = window.location.href;
+    document.getElementById("shareLinkBox").textContent = currentUrl;
+  }
+
+  function copyToClipboard(element) {
+    const text = element.textContent;
+    navigator.clipboard.writeText(text).then(() => {
+      alert("Copied to clipboard!");
+    });
+  }
+
+  loadShareLink();
+</script>
+				    
                                 <center>
                                     <form>
                                         <input class="MyButton" onclick="window.location.href='https://yosintv2.github.io/tv/ads.html'" type="button" value="Refresh Live" />
                                     </form>
                                 </center>
 
-
-                                <div class="disclaimer" style="text-align: center;"><b><span style="color: black;"> Skip 1-2 Ads | Watch Peacefully </span></b></div>
-
+				    
+	                       <div class="disclaimer" style="text-align: center;"><b><span style="color: black;"> Skip 1-2 Ads | Watch Peacefully </span></b></div>
                                 <iframe id="iframe" allow="encrypted-media" allowfullscreen="allowfullscreen" allowtransparency="true" frameborder="0" height="500px" marginheight="0" scrolling="no" marginwidth="0" width="100%"></iframe>
 
 
